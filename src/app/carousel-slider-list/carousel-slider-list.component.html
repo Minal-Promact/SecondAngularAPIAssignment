@@ -1,0 +1,49 @@
+
+<div class="row">
+    Added Slides
+</div>
+<br>
+<div class="row">
+    <div class="col-md-6">
+    </div>
+    <div class="col-md-6"><input type="addCarousel" value="Add Carousel slide +" (click)="addCarousel()" id="btnAS">
+    </div>
+</div>
+<br>
+<div>
+    <ul class="list-group">
+        <li *ngFor="let carousel of lstCarousel" class="list-group-item">
+            {{ carousel.slideCaption }}
+            <button (click)="deleteSlide(carousel.imageUrl)" class="btn btn-danger" style="margin-left: 10px"> Delete</button>
+
+
+        </li>
+    </ul>
+</div>
+<br>
+<div class="row" *ngIf="isAddMode">
+    <div class="card col-md-6 offset-md-3 offset-md-3">
+        <div class="row">
+            <h3 class="text-center"> Added new slide </h3>
+            <hr />
+            <div class="card-body">
+                <form #addNewSlide = "ngForm" (ngSubmit)="onSubmit(addNewSlide.value)">
+
+                    <div class="form-group">
+                        <label> Image Url</label>
+                        <input type="text" placeholder="Enter Image Url" ngModel class="form-control" id="imageUrl" name="imageUrl">
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Slide Caption </label>
+                        <input type="text" placeholder="Enter Slide Caption" class="form-control" id="slideCaption" name="slideCaption" ngModel>
+                    </div>
+
+                    <br />
+                    <input type="submit" value="Add Slide" id="btn">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
