@@ -1,1 +1,14 @@
-<p>carousel works!</p>
+<div class="container-fluid">
+    <h1>Angular Bootstrap Carousel Example</h1>
+    <ngb-carousel>
+        <ng-template ngbSlide *ngFor="let image of lstCarousel">
+            <div class="wrapper">
+                <img [src]="image.imageUrl" alt="Random first slide">
+            </div>
+            <div class="carousel-caption" style="margin-bottom: 10%; margin-right: 15%;">
+                <h3>{{ image.slideCaption }}</h3>                
+            </div>
+        </ng-template>
+    </ngb-carousel>
+</div>
+<app-carousel-slider-list (carouselEmitter)="onCarousel($event)"></app-carousel-slider-list>
