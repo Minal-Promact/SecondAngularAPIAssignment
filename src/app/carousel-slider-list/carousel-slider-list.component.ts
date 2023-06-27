@@ -15,15 +15,13 @@ import { carouselRequest } from '../carouselRequest';
 export class CarouselSliderListComponent implements OnInit {
 
   public lstCarousel: Carousel[] = [];
-  carousel: Carousel;
-  isAddMode: boolean;
+  carousel: Carousel; 
   carouselRequest: carouselRequest;
-  @Output() carouselEmitter = new EventEmitter<any>();
-  errorMessage: string;
+  @Output() carouselEmitter = new EventEmitter<any>(); 
 
   constructor(private carouselService: CarouselService,
     private router: Router) {
-    this.isAddMode = false;
+   
   }
 
   ngOnInit(): void {
@@ -61,11 +59,7 @@ export class CarouselSliderListComponent implements OnInit {
       this.lstCarousel = this.getCarouselList();
       this.carouselEmitter.emit(this.lstCarousel);      
     }
-  }
-
-  addCarousel() {
-    this.isAddMode = true;
-  }
+  } 
 
   deleteSlide(imageUrl: string) {
     debugger;
