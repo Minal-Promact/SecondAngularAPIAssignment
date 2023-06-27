@@ -43,32 +43,24 @@ export class CarouselSliderListComponent implements OnInit {
 
   onSubmit(addNewSlide: NgForm) {
     debugger;
-
     console.log(addNewSlide.form.value);
-    if (addNewSlide.form.value.imageUrl != "" && addNewSlide.form.value.slideCaption != "") {
-      this.lstCarousel = this.lstCarousel.filter(i => i.imageUrl.toLowerCase().indexOf(addNewSlide.form.value.imageUrl.toLocaleLowerCase()) !== -1);
-      console.log(this.lstCarousel);
-      debugger;
-      if (this.lstCarousel.length == 0) {
-        this.carouselService.createEmployee(addNewSlide.form.value).subscribe(data => {
-          console.log(data);
-          this.lstCarousel = this.getCarouselList();
-          this.carouselEmitter.emit(this.lstCarousel)
-          alert("The image is saved successfully.");
-
-        },
-          error => console.log(error));
-      }
-      else {
-        alert("The image is already exists.");
+    this.lstCarousel = this.lstCarousel.filter(i => i.imageUrl.toLowerCase().indexOf(addNewSlide.form.value.imageUrl.toLocaleLowerCase()) !== -1);
+    console.log(this.lstCarousel);
+    debugger;
+    if (this.lstCarousel.length == 0) {
+      this.carouselService.createEmployee(addNewSlide.form.value).subscribe(data => {
+        console.log(data);
         this.lstCarousel = this.getCarouselList();
         this.carouselEmitter.emit(this.lstCarousel)
-
-        this.isAddMode = false;
-      }
+        alert("The image is saved successfully.");
+      },
+        error => console.log(error));
     }
-
-
+    else {
+      alert("The image is already exists.");
+      this.lstCarousel = this.getCarouselList();
+      this.carouselEmitter.emit(this.lstCarousel);      
+    }
   }
 
   addCarousel() {
