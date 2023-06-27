@@ -19,6 +19,7 @@ export class CarouselSliderListComponent implements OnInit {
   isAddMode: boolean;
   carouselRequest: carouselRequest;
   @Output() carouselEmitter = new EventEmitter<any>();
+  errorMessage: string;
 
   constructor(private carouselService: CarouselService,
     private router: Router) {
@@ -40,29 +41,34 @@ export class CarouselSliderListComponent implements OnInit {
       });
   }
 
-  onSubmit(data) {
+  onSubmit(addNewSlide: NgForm) {
     debugger;
-    console.log(data);
-    this.lstCarousel = this.lstCarousel.filter(i => i.imageUrl.toLowerCase().indexOf(data.imageUrl.toLocaleLowerCase()) !== -1);
-    console.log(this.lstCarousel);
-    debugger;
-    if (this.lstCarousel.length == 0) {
-      this.carouselService.createEmployee(data).subscribe(data => {
-        console.log(data);
+
+    console.log(addNewSlide.form.value);
+    if (addNewSlide.form.value.imageUrl != "" && addNewSlide.form.value.slideCaption != "") {
+      this.lstCarousel = this.lstCarousel.filter(i => i.imageUrl.toLowerCase().indexOf(addNewSlide.form.value.imageUrl.toLocaleLowerCase()) !== -1);
+      console.log(this.lstCarousel);
+      debugger;
+      if (this.lstCarousel.length == 0) {
+        this.carouselService.createEmployee(addNewSlide.form.value).subscribe(data => {
+          console.log(data);
+          this.lstCarousel = this.getCarouselList();
+          this.carouselEmitter.emit(this.lstCarousel)
+          alert("The image is saved successfully.");
+
+        },
+          error => console.log(error));
+      }
+      else {
+        alert("The image is already exists.");
         this.lstCarousel = this.getCarouselList();
         this.carouselEmitter.emit(this.lstCarousel)
-        alert("The image is saved successfully.");
-        this.isAddMode = false;
-      },
-        error => console.log(error));
-    }
-    else {
-      alert("The image is already exists.");
-      this.lstCarousel = this.getCarouselList();
-      this.carouselEmitter.emit(this.lstCarousel)
 
-      this.isAddMode = false;
+        this.isAddMode = false;
+      }
     }
+
+
   }
 
   addCarousel() {
