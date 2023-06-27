@@ -25,12 +25,13 @@ export class CarouselComponent implements OnInit{
   
   constructor(config: NgbCarouselConfig,private carouselService: CarouselService,
     private router: Router,@Inject(DOCUMENT) private _document: Document) {
-    config.interval = 1000;
+    config.interval = 2000;
     config.keyboard = true;
     config.pauseOnHover = true;
     this.getCarouselList(); 
   }
-  ngOnInit(): void {       
+  ngOnInit(): void {
+    this.getCarouselList();        
   }
 
   refresh():void {

@@ -2,13 +2,6 @@
     <b>Added Slides</b>
 </div>
 <br>
-<div class="row">
-    <div class="col-md-6">
-    </div>
-    <div class="col-md-6"><input type="addCarousel" value="Add Carousel slide +" (click)="addCarousel()" id="btnAS">
-    </div>
-</div>
-<br>
 <div>
     <ul class="list-group">
         <li *ngFor="let carousel of lstCarousel">
@@ -28,8 +21,8 @@
 
 </div>
 <br>
-<div class="row" *ngIf="isAddMode">
-    <div class="card col-md-6 offset-md-3 offset-md-3">
+<div class="row">
+    <div class="card col-md-6">
         <div class="row">
             <h3 class="text-center"> Added new slide </h3>
             <hr />
@@ -61,6 +54,5 @@
             </div>
         </div>
     </div>
+    <div class="col-md-6"></div>
 </div>
-
-<div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
