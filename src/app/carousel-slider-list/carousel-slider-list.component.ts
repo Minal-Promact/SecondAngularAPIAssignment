@@ -61,9 +61,9 @@ export class CarouselSliderListComponent implements OnInit {
     }
   } 
 
-  deleteSlide(imageUrl: string) {
+  deleteSlide(id: number) {
     debugger;
-    this.carouselService.deleteEmployee(imageUrl).subscribe(data => {
+    this.carouselService.deleteEmployee(id).subscribe(data => {
       this.lstCarousel = this.getCarouselList();
       this.carouselEmitter.emit(this.lstCarousel)
       alert("The image is deleted successfully.");
