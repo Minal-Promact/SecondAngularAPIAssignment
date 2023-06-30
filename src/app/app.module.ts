@@ -4,16 +4,17 @@ import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CarouselComponent } from './carousel/carousel.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { CarouselSliderListComponent } from './carousel-slider-list/carousel-slider-list.component';
 import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarouselComponent,
-    CarouselSliderListComponent
+    CarouselComponent    
   ],
   imports: [
     BrowserModule,
@@ -21,7 +22,11 @@ import { FormsModule } from '@angular/forms';
     NgbModule,
     FontAwesomeModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbCarouselModule,
+    NgIf,
+    BrowserAnimationsModule,
+	ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
