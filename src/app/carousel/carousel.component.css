@@ -1,0 +1,83 @@
+
+.container-fluid {
+    width:70rem;
+    height:30rem
+  }
+
+  h1{
+    margin-left: 6rem;
+}
+h2{
+    margin-left: 6rem;
+}
+
+/* css for slider   */
+#slider{
+    display: flex;
+    margin:0%;
+    img{
+        height: 480px;
+        width:  1000px;
+        object-fit : cover;
+    }
+}
+/* css for input submit   */
+input[type=submit]{
+    width: 150x;
+    background-color: #5390fe;
+    color: white;
+    padding: 12PX 20PX;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* css for form   */
+.form{
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+/* css for input text   */
+input[type=text],select{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* set color for valid validation   */
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+  }
+  
+  /* set color for invalid validation   */
+  .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+  }
+
+  /* space between two div   */
+  .space{
+    margin-top: 20px;
+}
+
+/* trash icon   */
+#trash{
+    background-color: white;
+    border: none;
+}
+
+/* set red color for trash icon   */
+.DeleteTrash{
+    font-size:20px;color:red;
+}
+
+/* set red color for validation error   */
+.warning{
+    color:red;
+}

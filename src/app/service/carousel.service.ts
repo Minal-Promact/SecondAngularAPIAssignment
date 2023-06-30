@@ -1,8 +1,8 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
-import { Carousel } from './carousel';
-import { carouselRequest } from './carouselRequest';
+import { Carousel } from '../shared/carousel';
+import { carouselRequest } from '../shared/carouselRequest';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -19,23 +19,25 @@ export class CarouselService {
 
   constructor(private httpClient: HttpClient) { } 
     
-
+// get list of carousel 
     getCarouselList(): Observable<Carousel[]> {
 
       return this.httpClient.get<Carousel[]>(this.baseURL)
          .pipe(
             catchError(this.handleError)
          );
-   }   
+   }; 
 
+//post carousel data
     createEmployee(carousel: carouselRequest): Observable<carouselRequest> {
-      debugger
+     
       return this.httpClient.post<carouselRequest>(this.baseURL, carousel)
          .pipe(
             catchError(this.handleError)
          );
-   }    
+   };   
 
+   //delete carousel data
     deleteEmployee(id: number): Observable<{}> {
 
       const url = `${this.baseURL}/${id}`;
@@ -43,8 +45,9 @@ export class CarouselService {
          .pipe(
             catchError(this.handleError)
          );
-    }
+    };
 
+//handle error
     private handleError(error: HttpErrorResponse) {
 
       if (error.error instanceof ErrorEvent) {
